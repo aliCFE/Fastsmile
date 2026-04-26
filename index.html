@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مصطفى أحمد | FastSmile_</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Tahoma', sans-serif;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+}
+
+/* الوضع الراقي */
+body.modern {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+h1 { font-size: 3em; }
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+/* الوضع الشعبي المجنون */
+body.funny {
+  background: yellow;
+  color: black;
+  font-family: "Comic Sans MS";
+}
+
+body.funny h1 {
+  color: red;
+  animation: shake 0.5s infinite;
+}
+
+body.funny .card {
+  background: pink;
+  transform: rotate(-2deg);
+  animation: float 2s infinite alternate ease-in-out;
+}
+
+body.funny button {
+  background: red;
+  color: yellow;
+}
+
+@keyframes shake {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(2px,-2px); }
+  50% { transform: translate(-2px,2px); }
+  75% { transform: translate(2px,2px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes float {
+  from { transform: translateY(0px) rotate(-2deg); }
+  to { transform: translateY(-10px) rotate(2deg); }
+}
+
+.emoji {
+  position: fixed;
+  font-size: 30px;
+  pointer-events: none;
+  animation: moveRandom linear infinite;
+}
+
+@keyframes moveRandom {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(200px, -150px); }
+  50% { transform: translate(-150px, 200px); }
+  75% { transform: translate(300px, 100px); }
+  100% { transform: translate(0,0); }
+}
+
+.marquee {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: red;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll 10s linear infinite;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  opacity: 0.7;
+}
+
+</style>
+</head>
+<body class="modern">
+
+<button onclick="toggleMode()">تغيير الوضع 😂</button>
+
+<header>
+  <h1>مصطفى أحمد</h1>
+  <p>المعروف بـ FastSmile_ 😎</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>💙 عنه</h2>
+<p>
+أكثر من 15 سنة صداقة حقيقية من أيام الابتدائية 🔥
+</p>
+</div>
+
+<div class="card">
+<h2>🎓 رحلته</h2>
+<p>
+بدا مسيرته في مدرسة اللقاء الابتدائية الاهلية و تخرج منها ليصبح لاعب ماينكرافت محترف جدا على مستوى العراق و الشرق الاوسط 
+لاحقا: اعتزل هذه اللعبه و بدا بلعب روكت ليك و كان من افضل اللاعبين في العراق كذلك بلقطاته الجميلة
+و الان هو على وشك ان يصبح صيدلي محترف و يدرس في جامعة بغداد كلية الصيدلة و هو الان في السنة الرابعة و يخطط لدراسة الماجستير في بريطانيا او امريكا بعد التخرج ان شاء الله
+</p>
+</div>
+
+<div class="card">
+<h2>😂 مواقف</h2>
+<ul>
+<li>يقول راح يدرس وينام 😴</li>
+<li>يضحك قبل النكتة 😂</li>
+<li>كل ما احجي وياه يكلي عندي امتحانات</li>
+<li>يغير رأيه إذا شاف أكل 🍔</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>😂 جمل مشهورة</h2>
+<ul>
+<li>عندي امتحان</li>
+<li>ديماسيا امتحانااااات</li>
+<li>عندي ميد</li>
+</ul>
+</div>
+
+
+</div>
+
+<div class="footer">مصنوع بحب ❤️</div>
+
+<div id="marquee" class="marquee" style="display:none;">
+  <span>🔥 مصطفى أحمد أسطورة 😂😂😂 ملك الضحك 🔥🔥🔥</span>
+</div>
+
+<script>
+let funnyActive = false;
+
+function toggleMode() {
+  document.body.classList.toggle('modern');
+  document.body.classList.toggle('funny');
+  funnyActive = !funnyActive;
+
+  document.getElementById('marquee').style.display = funnyActive ? 'block' : 'none';
+
+  if (funnyActive) startChaos();
+  else stopChaos();
+}
+
+let emojis = [];
+
+function startChaos() {
+  for (let i = 0; i < 20; i++) {
+    let e = document.createElement('div');
+    e.className = 'emoji';
+    e.innerText = ['😂','🔥','💀','🍔','😎'][Math.floor(Math.random()*5)];
+    e.style.top = Math.random()*100 + 'vh';
+    e.style.left = Math.random()*100 + 'vw';
+    e.style.animationDuration = (2 + Math.random()*5) + 's';
+    document.body.appendChild(e);
+    emojis.push(e);
+  }
+}
+
+function stopChaos() {
+  emojis.forEach(e => e.remove());
+  emojis = [];
+}
+</script>
+
+</body>
+</html>
